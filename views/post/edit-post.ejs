@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+<main>
+    <div class="row">
+        <div class="col-md-2">
+            <%- include('../partials/sidebar') %>
+        </div>
+
+        <div class="col-md-6 ofset-md-3">
+            <div class="card card-body">
+                <h2 class="header">Update Your Post</h2>
+                <hr>
+                <div>
+                    <% if(post.thumbnail) { %>
+                    <img class="img-fluid" src="<%= post.thumbnail %>" alt="<%= post.title %>">
+                    <% } else { %>
+                        <img class="img-fluid" src="/uploads/img_590802a32a641.jpg" alt="">
+                    <% } %>
+                    <form class="login-form" action="/posts/edit/<%= post._id %> " method="POST"
+                        enctype="multipart/form-data">
+                        <div class="form-control">
+                            <label for="title">Post Title </label>
+                            <input type="text" name="title" id="title" value="<%= post.title %>" required>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="body">Post Description</label>
+                            <textarea name="body" id="" cols="30" rows="5" required><%= post.body %></textarea>
+                        </div>
+                        <div class="form-control">
+                            <label for="tags">Enter some tags <small>(max 5)</small></label>
+                            <input type="text" name="tags" id="tags" placeholder="tag1, tag2, tag3"
+                                value="<%= post.tags.join(',') %>" required>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="thumbnail">choose file</label>
+                            <input type="file" name="thumbnail">
+                        </div>
+
+                        <button class="btn" type="submit">Edit Post</button>
+                        <div class="margin"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include('../partials/footer') %>

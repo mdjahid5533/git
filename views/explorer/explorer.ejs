@@ -1,0 +1,64 @@
+<%- include('../partials/header') %>
+
+<main>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="/?filter=latest" class="btn">Latest</a>
+            <a href="/?filter=week" class="btn">Week</a>
+            <a href="/?filter=month" class="btn">Month</a>
+            <a href="/?filter=all" class="btn">All</a>
+        </div>
+
+        <% if(posts.length === 0) { %>
+        <h1>There is nothing to show</h1>
+        <% } else { %>
+        <div class="col-md-6 offset-md-3">
+            <% for(let post of posts) { %>
+            <div class="card  my-3">
+                <div class=" my-3 ml-3">
+                    <h5 class="mb-0">
+                        <a href="/author/<%= post.author._id %>" style="color: #00695c;"><strong><%= post.author.username %></strong></a>
+                    </h5>
+                    <small><%= moment(post.createdAt) %></small>
+                </div>
+                <% if(post.thumbnail) {%>
+                <img class="card-img-top" src="<%= post.thumbnail %> " alt="Card image cap">
+                <% } %>
+                <div class="card-body">
+                    <a href="/<%= post._id %> " style="color: black;">
+                        <h3 class="card-title"><strong><%= post.title %></strong></h3>
+                        <p class="card-text lead"><%= truncate(post.body) %> </p>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <% } %>
+        </div>
+        <% } %>
+
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+
+                    <li class="page-item <%= currentPage === 1 ? 'disabled': '' %>">
+                        <a class="page-link" href="<%= `/?filter=${filter}&page=${currentPage - 1}` %> "
+                            style="color: #00695c;">Previous
+                        </a></li>
+
+                    <% for(let i = 1; i <= totalPage; i++) {%>
+                    <li class="page-item">
+                        <a class="page-link" href="<%= `/?filter=${filter}&page=${i}` %>"
+                            style="color: #00695c;"><%= i %>
+                        </a></li>
+                    <% } %>
+
+                    <li class="page-item <%= currentPage >= totalPage ? 'disabled' : '' %>"><a class="page-link"
+                            href="<%= `/?filter=${filter}&page=${currentPage + 1}` %> " style="color: #00695c;">Next
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>

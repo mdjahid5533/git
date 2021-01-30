@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+<main>
+    
+    <form class="login-form" action="/auth/signup" method="POST">
+        <div class="form-control">
+            <label for="username">Username <small>(must be unique)</small> </label>
+            <input type="text" name="username" id="username" minlength="3" maxlength="15" required>
+        </div>
+        <div class="form-control">
+            <label for="email">E-Mail <small>(must be unique)</small></label>
+            <input type="email" name="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" minlength="8" placeholder="........" required >
+        </div>
+        <div class="form-control">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="passwordConfirm" id="confirmPassword" placeholder="........" minlength="8" required ">
+        </div>
+
+        <button class="btn" type="submit">Signup</button>
+    </form>
+</main>
+
+<%- include('../partials/footer') %>

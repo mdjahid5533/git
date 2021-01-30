@@ -1,0 +1,46 @@
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+
+            <li class="main-header__item active">
+                <a href="#" style="color: #ffeb3b"><Strong>PUBLIC-SERVICE</Strong></a>
+            </li>
+            <li class="main-header__item">
+                <a href="/">Explore</a>
+            </li>
+
+            <% if(isLoggedIn){ %>
+            <li class="main-header__item">
+                <a href="/dashboard">Profile</a>
+            </li>
+            <% } else{ %>
+            <li class="main-header__item">
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li class="main-header__item">
+                <a href="/auth/login">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a href="/auth/signup">Signup</a>
+            </li>
+            <% } %>
+
+        </ul>
+
+        <form action="/search" method="GET">
+            <input type="search" class="form-controll   " name="term" id="search" placeholder="search"
+                aria-label="search">
+            <button class="btn" type="submit">Search</button>
+        </form>
+
+    </nav>
+</header>
+
+<!-- 
+    <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <input type="text">
+                <button class="btn"><a href="/">Search</a></button>
+            </li>
+        </ul>
+-->

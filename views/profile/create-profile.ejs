@@ -1,0 +1,76 @@
+<%- include('../partials/header') %>
+
+<main>
+
+    <div class="row">
+        <div class="col-md-2">
+            <%- include('../partials/sidebar') %>
+        </div>
+
+        <div class="col-md-10">
+            <div class="card">
+                <h2 class="header">Create Your Profile</h2>
+                <hr>
+
+
+                <div>
+                    <form class="login-form" action="/dashboard/create-profile" method="POST"
+                        enctype="multipart/form-data">
+
+                        <div class="profile-pics header">
+                            <img src="<%= user.profilePic %> " width="150px" alt="">
+                            <br>
+                            <input type="file" name="profilePic" accept="/*">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="username">Username </label>
+                            <input type="text" name="username" id="username" value="<%= user.username %>" disabled>
+                        </div>
+                        <div class="form-control">
+                            <label for="email">E-Mail</label>
+                            <input type="email" name="email" id="email" value="<%= user.email %> " disabled>
+                        </div>
+                        <div class="form-control">
+                            <label for="">Title</label>
+                            <input type="text" name="title" id="" minlength="3" maxlength="50" required>
+                        </div>
+                        <div class="form-control">
+                            <label for="">Bio</label>
+                            <input type="text" name="bio" id="" minlength="50" maxlength="5000" required>
+                        </div>
+
+                        <h4>Your Social Links:</h4>
+                        <hr>
+                        <div class="form-control">
+                            <label for="">website</label>
+                            <input type="text" name="website" id="">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="">facebook</label>
+                            <input type="text" name="facebook" id="">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="">instagram</label>
+                            <input type="text" name="instagram" id="">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="">github</label>
+                            <input type="text" name="github" id="">
+                        </div>
+
+                        <button class="btn" type="submit">Create Profile</button>
+                        <div class="margin"></div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include('../partials/footer') %>

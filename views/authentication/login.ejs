@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+
+<main>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="">
+                <form class="login-form" action="/auth/login" method="POST">
+                    <div class="form-control">
+                        <label for="email">E-Mail</label>
+                        <input  type="email" name="email" id="email" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" value="" required>
+                    </div>
+                    <button class="btn" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+   
+</main>
+
+<%- include('../partials/footer') %>

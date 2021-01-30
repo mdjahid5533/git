@@ -1,0 +1,73 @@
+<%- include('../partials/header') %>
+
+<main>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <div class="">
+                <div>
+                    <% if(author.profile.profilePic) {%>
+                    <img src="<%= author.profile.profilePic %>" class="img-thumbnail img-fluid" width="200px" alt="">
+                    <% } else { %>
+                    <img src="<%= author.profilePic %>" class="img-thumbnail img-fluid" width="200px" alt="">
+                    <% } %>
+
+                </div>
+                <div class="mt-5 align-self-center">
+                    <p>Name: <Strong><%= author.username %></Strong></p>
+                    <p>email: <Strong><%= author.email %></Strong></p>
+                    <p>Bio: <%= (author.profile.bio) %> </p>
+
+                    <div>
+                        social Link:
+                        <% if(author.profile.link.website) {%>
+                        <span>
+                            <a href="<%= author.profile.link.website %>" target="_blank"><i
+                                    class="fab fa-internet-explorer"></i></a>
+                        </span>
+                        <% } %>
+
+                        <% if(author.profile.link.facebook) {%>
+                        <span>
+                            <a href="<%= author.profile.link.facebook %>" target="_blank"><i
+                                    class="fab fa-facebook-square"></i></a>
+                        </span>
+                        <% } %>
+
+                        <% if(author.profile.link.instagram) {%>
+                        <span>
+                            <a href="<%= author.profile.link.instagram %>" target="_blank"><i
+                                    class="fab fa-instagram-square"></i></a>
+                        </span>
+                        <% } %>
+
+                        <% if(author.profile.link.github) {%>
+                        <span>
+                            <a href="<%= author.profile.link.github %>" target="_blank"><i
+                                    class="fab fa-github-square"></i></a>
+                        </span>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <% for(post of posts.reverse()) { %>
+                <div class="card bg-light mb-2 mr-2"    ">
+                    <% if(post.thumbnail) { %>
+                    <img class="card-img-top" src="<%= post.thumbnail %>" alt="<%= post.title %>">
+                    <% } else {%>
+                        <img src="/uploads/img_590802a32a641.jpg" height="145px" alt="">
+
+                        <% } %> 
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/<%= post._id %>" style="color: black;"><%= post.title %></a></h5>
+                        
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
